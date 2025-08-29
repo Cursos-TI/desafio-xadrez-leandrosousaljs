@@ -34,6 +34,21 @@ int main () {
 
   printf("Fim do movimento da Rainha!\n");
 
+  //Simulando movimento do Cavalo
+  printf("\nCavalo se movimentando...\n");
+
+  
+  for (int i = 0; i < 1; i++) {
+    int movimentoSecundario = 0;
+    while (movimentoSecundario < 2) {
+      printf("Baixo\n");
+      movimentoSecundario++;
+    }
+    printf("Esquerda\n");
+  }
+
+  printf("Fim do movimento do Cavalo!\n");
+
   return 0;
 
 }
