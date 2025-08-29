@@ -1,54 +1,66 @@
 #include <stdio.h>
 
-int main () {
-  //Simulando movimento da Torre
-  int movimentoTorre = 0;
-
-  printf("Torre se movimentando...\n");
-  
-  while (movimentoTorre < 5 ) {
+// Simulando o movimento das peças com funções recursivas
+void moverTorre(int casas) {
+  if (casas > 0) {
     printf("Direita\n");
-    movimentoTorre++;
+    moverTorre(casas - 1);
   }
+}
 
+void moverBispo(int casas) {
+  if (casas > 0) {
+    for (int i = 0; i < 1; i++) {          // loop "vertical"
+      for (int j = 0; j < 1; j++) {        // loop "horizontal"
+        printf("Cima Direita\n");
+      }
+    }
+    moverBispo(casas - 1);
+  }
+}
+
+void moverRainha(int casas) {
+  if (casas > 0) {
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+  }
+}
+
+
+int main () {
+  printf("Torre se movimentando...\n");
+  moverTorre(5);
   printf("Fim do movimento da Torre!\n");
 
-  //Simulando movimento do Bispo
-  int movimentoBispo = 0;
-
   printf("\nBispo se movimentando...\n");
-
-  do {
-    printf("Cima Direita\n");
-    movimentoBispo++;
-  } while (movimentoBispo < 5);
-
+  moverBispo(5);
   printf("Fim do movimento do Bispo!\n");
 
-  //Simulando movimento da Rainha
   printf("\nRainha se movimentando...\n");
-
-  for (int i = 0; i < 8; i++) {
-    printf("Esquerda\n");
-  }
-
+  moverRainha(8);
   printf("Fim do movimento da Rainha!\n");
 
-  //Simulando movimento do Cavalo
   printf("\nCavalo se movimentando...\n");
 
-  
-  for (int i = 0; i < 1; i++) {
-    int movimentoSecundario = 0;
-    while (movimentoSecundario < 2) {
-      printf("Baixo\n");
-      movimentoSecundario++;
+  int mov = 1; // quantidade de movimentos completos
+
+  for (int i = 0; i < mov; i++) {
+    for (int j = 0, k = 0; j < 3; j++) {
+      // Subindo
+      if (j < 2) {
+        printf("Cima\n");
+        k++;
+        continue;
+      }
+      // Indo para a direita
+      if (k == 2) {
+        printf("Direita\n");
+        break;
+      }
     }
-    printf("Esquerda\n");
   }
 
   printf("Fim do movimento do Cavalo!\n");
 
   return 0;
-
 }
